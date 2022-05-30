@@ -1,0 +1,33 @@
+---
+
+name: Test
+
+on: 
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image: archlinux:latest
+      volumes:
+        - /proc:/proc
+      options: --privileged
+
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: |
+          pacman -S neofetch && neofetch
+        
+      #- name: Upload Raspberry Images
+      #  uses: actions/upload-artifact@v2
+      #  with:
+      #    name: Raspberry-Images
+      #    path: artifacts/elementary-rpi/output/
