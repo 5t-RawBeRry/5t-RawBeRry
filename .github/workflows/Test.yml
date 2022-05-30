@@ -18,34 +18,20 @@ jobs:
       options: --privileged
 
     steps:
-
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Prepare Mixedwrt
+      - name: Build
+        id: build
+        uses: Clansty/build-aur-action@main
+        with:
+          repo-name: yay
+      
+      - name: check
         run: |
-          yes | pacman -Syyu && yes | pacman -S git base-devel;
+        ls;
 
-      - name: Linux-LQX
-        run: |
-          git clone https://aur.archlinux.org/linux-lqx.git;
-          cd linux-lqx && makepkg;
-          makepkg -si;
-
-      - name: Linux-LQX-Headers
-        run: |
-          git clone https://aur.archlinux.org/linux-lqx-headers.git;
-          cd linux-lqx && makepkg;
-
-      - name: Pack
-        run: |
-          ls -l linux-lqx && ls -l linux-lqx-headers;
-          mkdir packages;
-          cp -r linux-lqx/*.pkg.tar.xz packages/;
-          cp -r linux-lqx-headers/*.pkg.tar.xz packages/;
 
         
-      - name: Upload Raspberry Images
-        uses: actions/upload-artifact@v2
-        with:
-          name: linux-lqx
-          path: packages/
+      #- name: Upload Raspberry Images
+      #  uses: actions/upload-artifact@v2
+      #  with:
+      #    name: linux-lqx
+      #    path: packages/
