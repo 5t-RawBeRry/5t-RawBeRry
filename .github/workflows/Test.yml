@@ -15,16 +15,19 @@ jobs:
       - name: Build
         uses: Clansty/build-aur-action@main
         with:
-          repo-name: yay
+          repo-name: xrdp
       
       - name: check
         run: |
-          ls
+          ls;
+          ls xrdp;
+          mkdir packages;
+          mv xrdp/*.pkg.tar.xz packages;
 
 
         
-      #- name: Upload Raspberry Images
-      #  uses: actions/upload-artifact@v2
-      #  with:
-      #    name: linux-lqx
-      #    path: packages/
+      - name: Upload Raspberry Images
+        uses: actions/upload-artifact@v2
+        with:
+          name: Packages
+          path: packages/
