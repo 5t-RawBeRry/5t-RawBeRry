@@ -1,0 +1,35 @@
+---
+
+name: Liquorix Kernel
+
+on: 
+  workflow_dispatch: {}
+  schedule:
+    - cron: "0 0 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: linux-lqx
+        uses: Clansty/build-aur-action@main
+        with:
+          repo-name: linux-lqx
+      
+      - name: linux-lqx-headers
+        uses: Clansty/build-aur-action@main
+        with:
+          repo-name: linux-lqx-headers
+
+      - name: check
+        run: |
+          mkdir packages;
+          mv linux-lqx/*.pkg.tar.zst packages;
+          mv linux-lqx-headers/*.pkg.tar.zst packages;
+
+      - name: Upload Raspberry Images
+        uses: actions/upload-artifact@v2
+        with:
+          name: linux-lqx
+          path: packages/
