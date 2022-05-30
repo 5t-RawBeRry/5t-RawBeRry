@@ -15,14 +15,15 @@ jobs:
       - name: Build
         uses: Clansty/build-aur-action@main
         with:
-          repo-name: xrdp
+          repo-name: nvidia-open-beta-dkms
       
       - name: check
         run: |
           ls;
-          ls xrdp;
+          ls nvidia-open-beta-dkms;
+          ls nvidia-open-beta-dkms/pkg;
           mkdir packages;
-          mv xrdp/*.pkg.tar.xz packages;
+          mv nvidia-open-beta-dkms/*.pkg.tar.xz packages;
 
 
         
