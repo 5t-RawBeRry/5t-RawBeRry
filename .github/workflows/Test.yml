@@ -13,14 +13,13 @@ jobs:
 
     steps:
       - name: Build
-        id: build
         uses: Clansty/build-aur-action@main
         with:
           repo-name: yay
       
       - name: check
         run: |
-        ls;
+        ls
 
 
         
