@@ -24,7 +24,7 @@ jobs:
 
       - name: Build
         run: |
-          yes | pacman -Syyu && pacman -S neofetch && neofetch
+          yes | pacman -Syyu && yes | pacman -S neofetch && neofetch
         
       #- name: Upload Raspberry Images
       #  uses: actions/upload-artifact@v2
