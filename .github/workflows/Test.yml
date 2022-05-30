@@ -19,14 +19,9 @@ jobs:
       
       - name: check
         run: |
-          ls;
-          ls microsoft-edge-stable-bin;
-          ls microsoft-edge-stable-bin/pkg;
           mkdir packages;
-          mv microsoft-edge-stable-bin/*.pkg.tar.xz packages;
+          mv microsoft-edge-stable-bin/*.pkg.tar.zst packages;
 
-
-        
       - name: Upload Raspberry Images
         uses: actions/upload-artifact@v2
         with:
