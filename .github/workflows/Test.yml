@@ -15,15 +15,15 @@ jobs:
       - name: Build
         uses: Clansty/build-aur-action@main
         with:
-          repo-name: nvidia-open-beta-dkms
+          repo-name: microsoft-edge-stable-bin
       
       - name: check
         run: |
           ls;
-          ls nvidia-open-beta-dkms;
-          ls nvidia-open-beta-dkms/pkg;
+          ls microsoft-edge-stable-bin;
+          ls microsoft-edge-stable-bin/pkg;
           mkdir packages;
-          mv nvidia-open-beta-dkms/*.pkg.tar.xz packages;
+          mv microsoft-edge-stable-bin/*.pkg.tar.xz packages;
 
 
         
